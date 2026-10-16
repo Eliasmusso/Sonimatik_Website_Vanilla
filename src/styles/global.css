@@ -43,11 +43,6 @@
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  --text-hero: clamp(2.5rem, 5vw, 4rem);
-  --text-hero--line-height: 1.06;
-  --text-hero--letter-spacing: -0.02em;
-  --text-hero--font-weight: 700;
-
   --text-h2: clamp(1.75rem, 3.2vw, 2.5rem);
   --text-h2--line-height: 1.15;
   --text-h2--letter-spacing: -0.018em;
@@ -83,27 +78,6 @@
   --radius-control: 0.375rem;
 
   --ease-brand: cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 450ms var(--ease-brand), transform 450ms var(--ease-brand);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-[data-reveal='shown'],
-.no-js [data-reveal] {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
 
 @keyframes pulse-run {
