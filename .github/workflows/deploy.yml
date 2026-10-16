@@ -45,7 +45,10 @@ jobs:
                 if (entry.isDirectory()) walk(full);
                 else if (/\.(html|css|js|webmanifest)$/.test(entry.name)) {
                   let text = fs.readFileSync(full, "utf8");
-                  text = text.replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`);
+                  text = text
+                    .replace(/(href|src|component-url|renderer-url|before-hydration-url)="\/(?!\/)/g, `$1="${base}/`)
+                    .replace(/url\(\/(?!\/)/g, `url(${base}/`)
+                    .replace(/"(src|start_url)":\s*"\/(?!\/)/g, `"$1": "${base}/`);
                   fs.writeFileSync(full, text);
                 }
               }
