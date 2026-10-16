@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sonimatik">
+  <!-- Bildmarke auf Navy-Grund. Geometrie identisch zu
+       src/components/Bildmarke.astro: aus CI-Seite 4 ausgemessen,
+       Originalverhältnis 253 × 204 (breiter als hoch), hier auf 100 × 81
+       normiert und in das 64er-Quadrat eingepasst. -->
+  <rect width="64" height="64" rx="12" fill="#080E1C"/>
+  <g fill="#AACFDF" transform="translate(9.5 15.9) scale(0.45)">
+    <rect x="7.9"  y="0"    width="85.4" height="8" rx="4"/>
+    <rect x="0"    y="11.9" width="69.2" height="8" rx="4"/>
+    <rect x="11.5" y="24.1" width="40.3" height="8" rx="4"/>
+    <rect x="28.5" y="35.2" width="40.7" height="8" rx="4"/>
+    <rect x="48.2" y="47.4" width="40.3" height="8" rx="4"/>
+    <rect x="28.5" y="60.1" width="71.5" height="8" rx="4"/>
+    <rect x="7.9"  y="73.1" width="85.4" height="8" rx="4"/>
+  </g>
+</svg>

@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// TODO: Have legal counsel review the privacy policy and verify the contact email address before publishing.
+const CONTACT_EMAIL = 'info@sonimatik.de';
+
+const serverLogs = [
+  'IP Adresse des anfragenden Geräts',
+  'Datum und Uhrzeit des Zugriffs',
+  'aufgerufene Adresse und übertragene Datenmenge',
+  'Meldung über den Erfolg des Abrufs (HTTP Statuscode)',
+  'Browsertyp, Browserversion und Betriebssystem',
+  'Referrer URL, sofern übermittelt',
+];
+
+const rights = [
+  'Auskunft über die zu Ihrer Person verarbeiteten Daten (Art. 15 DSGVO)',
+  'Berichtigung unrichtiger Daten (Art. 16 DSGVO)',
+  'Löschung (Art. 17 DSGVO)',
+  'Einschränkung der Verarbeitung (Art. 18 DSGVO)',
+  'Datenübertragbarkeit (Art. 20 DSGVO)',
+  'Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)',
+  'Widerruf einer erteilten Einwilligung (Art. 7 Abs. 3 DSGVO)',
+];
+---
+
+<Layout
+  title="Datenschutzerklärung"
+  description="Informationen zur Verarbeitung personenbezogener Daten auf der Website der Sonimatik GmbH."
+  noindex
+>
+  <article class="pt-[clamp(6rem,12vw,9rem)] pb-[clamp(4rem,8vw,6rem)]">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <header class="max-w-[42rem] mb-[clamp(2.5rem,5vw,3.5rem)]">
+        <p
+          class="m-0 flex items-center gap-3 mb-5 font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-300"
+        >
+          <span class="block w-6 h-[3px] rounded-full bg-current" aria-hidden="true"></span>
+          Rechtliches
+        </p>
+        <h1 class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em]">
+          Datenschutzerklärung
+        </h1>
+      </header>
+
+      <div class="max-w-[42rem]">
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          1. Verantwortlicher und Datenschutzbeauftragte
+        </h2>
+        <address class="not-italic text-grau-200 leading-[1.8] mb-5">
+          <strong>Sonimatik GmbH</strong><br />
+          Goethestraße 33<br />
+          74076 Heilbronn<br />
+          Deutschland
+        </address>
+        <dl class="m-0 mb-6 grid sm:grid-cols-[13rem_1fr] gap-y-2 gap-x-6">
+          <dt class="font-display font-medium text-[0.8125rem] tracking-[0.06em] uppercase text-brand-300 pt-0.5">
+            Telefon
+          </dt>
+          <dd class="m-0 text-grau-200">
+            <a href="tel:+49713177490" class="text-brand-300 underline decoration-brand-300/40 underline-offset-4">
+              +49 7131 77 49 0
+            </a>
+          </dd>
+          <dt class="font-display font-medium text-[0.8125rem] tracking-[0.06em] uppercase text-brand-300 pt-0.5">
+            E Mail
+          </dt>
+          <dd class="m-0 text-grau-200">
+            <a href={`mailto:${CONTACT_EMAIL}`} class="text-brand-300 underline decoration-brand-300/40 underline-offset-4">
+              {CONTACT_EMAIL}
+            </a>
+          </dd>
+          <dt class="font-display font-medium text-[0.8125rem] tracking-[0.06em] uppercase text-brand-300 pt-0.5">
+            Vertreten durch
+          </dt>
+          <dd class="m-0 text-grau-200">Eduard Breitenbach</dd>
+          <dt class="font-display font-medium text-[0.8125rem] tracking-[0.06em] uppercase text-brand-300 pt-0.5">
+            Datenschutzbeauftragte
+          </dt>
+          <dd class="m-0 text-grau-200">Eduard Breitenbach, Sabrina Kisslinger</dd>
+        </dl>
+        <p class="m-0 mb-4 text-grau-300">
+          Unsere Datenschutzbeauftragten erreichen Sie unter der oben genannten Postanschrift sowie
+          per E Mail unter
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-brand-300 underline decoration-brand-300/40 underline-offset-4">
+            {CONTACT_EMAIL}
+          </a>.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          2. Überblick
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Diese Website ist als statische Website bewusst datensparsam aufgebaut. Sie setzt
+          <strong>keine Cookies</strong>, nutzt keinen lokalen Browserspeicher zu Trackingzwecken,
+          bindet <strong>keine Inhalte oder Skripte von Drittanbietern</strong> ein und verwendet
+          <strong>keine Dienste für Analyse, Tracking oder Werbung</strong>. Alle Schriftarten und
+          Grafiken werden direkt vom eigenen Server ausgeliefert, nicht über externe Content
+          Delivery Networks. Es findet keine Nutzerprofilbildung statt. Aus diesem Grund ist auch
+          kein Cookie Banner erforderlich.
+        </p>
+        <p class="m-0 mb-4 text-grau-300">
+          Personenbezogene Daten verarbeiten wir nur in zwei Fällen: technisch notwendige
+          Serverprotokolle beim Aufruf der Seite und die Angaben, die Sie freiwillig über das
+          Kontaktformular oder per direkter Nachricht an uns übermitteln.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          3. Hosting und Serverprotokolle
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Die Website wird auf Servern der Hetzner Online GmbH, Industriestraße 25, 91710
+          Gunzenhausen, in Deutschland betrieben. Mit dem Anbieter besteht ein Vertrag zur
+          Auftragsverarbeitung nach Art. 28 DSGVO.
+        </p>
+        <p class="m-0 mb-4 text-grau-300">
+          Bei jedem Aufruf der statischen Seiten erfasst der Webserver automatisch Informationen,
+          die Ihr Browser technisch bedingt übermittelt:
+        </p>
+        <ul class="m-0 mb-5 p-0 list-none flex flex-col gap-2">
+          {
+            serverLogs.map((item) => (
+              <li class="relative pl-[1.625rem] text-grau-300 before:content-[''] before:absolute before:left-0 before:top-[0.75em] before:w-3.5 before:h-[2px] before:rounded-full before:bg-brand-300 before:opacity-70">
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="m-0 mb-4 text-grau-300">
+          Diese Verarbeitung ist technisch erforderlich, um die Website auszuliefern, ihre
+          Stabilität zu gewährleisten und Angriffe zu erkennen. Rechtsgrundlage ist Art. 6 Abs. 1
+          lit. f DSGVO; unser berechtigtes Interesse liegt im sicheren und störungsfreien Betrieb.
+          Die Protokolldaten werden nach spätestens 14 Tagen gelöscht. Eine Zusammenführung mit
+          anderen Datenquellen findet nicht statt.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          4. Kontaktformular
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Wenn Sie das Kontaktformular nutzen, verarbeiten wir die von Ihnen eingegebenen Angaben:
+          Name, E Mail Adresse, Betreff und Nachricht sowie optional Firma und Telefonnummer. Vor
+          dem Absenden findet eine Plausibilitätsprüfung der Eingaben direkt in Ihrem Browser statt.
+        </p>
+        <p class="m-0 mb-4 text-grau-300">
+          Die übermittelten Angaben werden ausschließlich zur Bearbeitung Ihres Anliegens verwendet
+          und nicht an unbeteiligte Dritte weitergegeben. Wir bewahren Ihre Anfrage nur so lange
+          auf, wie es für die Bearbeitung Ihres Anliegens erforderlich ist oder gesetzliche
+          Aufbewahrungsfristen bestehen.
+        </p>
+        <p class="m-0 mb-4 text-grau-300">
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung durch das Absenden mit
+          gesetzter Checkbox) sowie Art. 6 Abs. 1 lit. b bzw. f DSGVO, soweit Ihre Anfrage der
+          Vorbereitung oder Durchführung eines Vertrags dient. Ihre Einwilligung können Sie
+          jederzeit mit Wirkung für die Zukunft widerrufen; die Rechtmäßigkeit der bis dahin
+          erfolgten Verarbeitung bleibt unberührt.
+        </p>
+
+        <h3 class="mt-8 mb-3 font-display font-bold text-[1.0625rem] text-grau-100">
+          Schutz vor automatisierten Einsendungen
+        </h3>
+        <p class="m-0 mb-4 text-grau-300">
+          Zum Schutz gegen automatisierte Spameinsendungen nutzt das Formular ausschließlich eigene,
+          datensparsame Prüfmechanismen wie ein für Besucher unsichtbares Zusatzfeld und einen
+          Zeitstempel des Formularaufrufs. Es kommt <strong>kein</strong> externer Captcha Dienst
+          zum Einsatz und es werden hierfür keine Daten an Drittanbieter übertragen.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          5. Kontakt per E Mail oder Telefon
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Wenn Sie uns direkt per E Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben zur
+          Bearbeitung des Anliegens. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO bei
+          vertragsbezogenen Anfragen, ansonsten Art. 6 Abs. 1 lit. f DSGVO. Wir löschen die Daten,
+          sobald der Zweck entfällt und keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          6. Keine Weitergabe an Dritte
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Eine Übermittlung Ihrer personenbezogenen Daten an Dritte erfolgt nicht, außer im Rahmen
+          der Auftragsverarbeitung für den technischen Betrieb unserer Infrastruktur in Deutschland
+          oder wenn wir gesetzlich dazu verpflichtet sind.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          7. Ihre Rechte
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">Sie haben jederzeit das Recht auf:</p>
+        <ul class="m-0 mb-5 p-0 list-none flex flex-col gap-2">
+          {
+            rights.map((item) => (
+              <li class="relative pl-[1.625rem] text-grau-300 before:content-[''] before:absolute before:left-0 before:top-[0.75em] before:w-3.5 before:h-[2px] before:rounded-full before:bg-brand-300 before:opacity-70">
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="m-0 mb-4 text-grau-300">
+          Zur Ausübung Ihrer Rechte genügt eine Nachricht an
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-brand-300 underline decoration-brand-300/40 underline-offset-4">
+            {CONTACT_EMAIL}
+          </a>.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          8. Beschwerderecht bei der Aufsichtsbehörde
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Sie haben das Recht, sich bei einer Aufsichtsbehörde für den Datenschutz zu beschweren.
+          Zuständig für unser Unternehmen ist der Landesbeauftragte für den Datenschutz und die
+          Informationsfreiheit Baden Württemberg, Lautenschlagerstraße 20, 70173 Stuttgart.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          9. Verschlüsselung
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Diese Website nutzt eine TLS Verschlüsselung. Übertragungen zwischen Ihrem Browser und
+          unserem Server sind dadurch für Dritte nicht mitlesbar. Eine verschlüsselte Verbindung
+          erkennen Sie am Schlosssymbol in der Adressleiste Ihres Browsers.
+        </p>
+
+        <h2
+          class="mt-[clamp(2.5rem,5vw,3.25rem)] mb-4 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em]"
+        >
+          10. Änderungen dieser Erklärung
+        </h2>
+        <p class="m-0 mb-4 text-grau-300">
+          Wir passen diese Datenschutzerklärung an, wenn sich die Rechtslage oder die technische
+          Umsetzung der Website ändert. Für Ihren Besuch gilt die jeweils hier abrufbare Fassung.
+        </p>
+      </div>
+
+      <p class="m-0 mt-[clamp(3rem,6vw,4.5rem)] pt-8 border-t border-white/8 max-w-[42rem]">
+        <a
+          href="/"
+          class="font-display font-medium text-[0.9375rem] text-brand-300 no-underline hover:underline"
+        >
+          ← Zurück zur Startseite
+        </a>
+      </p>
+    </div>
+  </article>
+</Layout>

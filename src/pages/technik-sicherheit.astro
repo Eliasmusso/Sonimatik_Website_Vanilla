@@ -1,0 +1,277 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+
+const privacyPoints = [
+  {
+    title: 'DSGVO konforme Verarbeitung',
+    text: 'Rechtsgrundlage, Zweckbindung und Löschfristen sind je Verarbeitung festgelegt.',
+  },
+  {
+    title: 'Datensparsamkeit',
+    text: 'Erhoben wird nur, was der Prozess erfordert, und nicht, was technisch möglich wäre.',
+  },
+  {
+    title: 'Auftragsverarbeitung',
+    text: 'Verträge nach Art. 28 DSGVO mit allen eingesetzten Dienstleistern.',
+  },
+  {
+    title: 'Serverstandort Deutschland und EU',
+    text: 'Daten verlassen den europäischen Rechtsraum nicht.',
+  },
+];
+
+// TODO: Add ISO 27001 advisory reference only once the service is officially offered.
+---
+
+<Layout
+  title="Technik & Sicherheit | Sonimatik"
+  description="Informationssicherheit und Datenschutz als Grundprinzip: zertifizierte Rechenzentren, verschlüsselte Schnittstellen, DSGVO konforme Prozesse."
+>
+  <PageHero
+    title="Sicherheit als Grundprinzip"
+    lead="Informationssicherheit und Datenschutz sind bei uns kein Zusatz, sondern Bestandteil jeder Lösung."
+  />
+
+  <!-- Informationssicherheit -->
+  <section
+    id="informationssicherheit"
+    class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600"
+  >
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Informationssicherheit</span>
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,3.5rem)] items-start"
+      >
+        <div class="col-span-12 min-[62rem]:col-span-5">
+          <p
+            class="m-0 font-display font-medium text-lead leading-[1.6] tracking-[-0.015em] text-navy-900 max-w-[34ch] mb-5"
+            data-reveal
+          >
+            Sichere Infrastruktur vom Rechenzentrum bis zum einzelnen Datenfeld.
+          </p>
+          <p class="m-0 text-navy-500 max-w-[46ch]" data-reveal style="--reveal-delay:80ms">
+            Wir richten Systeme so ein, dass sie belastbar bleiben, wenn Anforderungen wachsen, und
+            dass nachvollziehbar ist, wer auf welche Daten zugreifen konnte.
+          </p>
+        </div>
+
+        <div
+          class="col-span-12 min-[62rem]:col-start-7 min-[62rem]:col-span-6"
+          data-reveal
+          style="--reveal-delay:120ms"
+        >
+          <div class="relative rounded-panel bg-white border border-navy-500/14 p-[clamp(1.75rem,3.5vw,3rem)]">
+            <!-- Rekursiv verschachteltes Schichtenmodell -->
+            <div class="relative pl-[clamp(0.75rem,2vw,1.125rem)] border-l border-navy-500/30 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-[clamp(0.5rem,1.4vw,0.75rem)] before:h-px before:bg-brand-600 before:opacity-60">
+              <div class="pb-3.5">
+                <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-1">
+                  Rechenzentrum
+                </h3>
+                <p class="m-0 text-small text-navy-500 max-w-[44ch]">
+                  Betrieb in zertifizierten Rechenzentren von Hetzner, Standort Deutschland.
+                </p>
+              </div>
+              <div class="mt-0.5 relative pl-[clamp(0.75rem,2vw,1.125rem)] border-l border-navy-500/30 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-[clamp(0.5rem,1.4vw,0.75rem)] before:h-px before:bg-brand-600 before:opacity-60">
+                <div class="pb-3.5">
+                  <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-1">
+                    Netzwerk
+                  </h3>
+                  <p class="m-0 text-small text-navy-500 max-w-[44ch]">
+                    Segmentierung und Netzwerksicherheit zwischen den Systemen.
+                  </p>
+                </div>
+                <div class="mt-0.5 relative pl-[clamp(0.75rem,2vw,1.125rem)] border-l border-navy-500/30 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-[clamp(0.5rem,1.4vw,0.75rem)] before:h-px before:bg-brand-600 before:opacity-60">
+                  <div class="pb-3.5">
+                    <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-1">
+                      Anwendung
+                    </h3>
+                    <p class="m-0 text-small text-navy-500 max-w-[44ch]">
+                      Verschlüsselte Schnittstellen, authentifizierte und protokollierte Zugriffe.
+                    </p>
+                  </div>
+                  <div class="mt-0.5 relative pl-[clamp(0.75rem,2vw,1.125rem)] border-l border-navy-500/30 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-[clamp(0.5rem,1.4vw,0.75rem)] before:h-px before:bg-brand-600 before:opacity-60">
+                    <div class="pb-3.5">
+                      <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-1">
+                        Rollen & Berechtigungen
+                      </h3>
+                      <p class="m-0 text-small text-navy-500 max-w-[44ch]">
+                        Rollenbasierte Vergabe nach dem Grundsatz der minimal notwendigen Rechte.
+                      </p>
+                    </div>
+                    <div class="mt-0.5 relative pl-[clamp(0.75rem,2vw,1.125rem)] border-l border-brand-600 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-[clamp(0.5rem,1.4vw,0.75rem)] before:h-px before:bg-brand-600 before:opacity-60">
+                      <div class="pb-3.5">
+                        <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-1">
+                          Daten
+                        </h3>
+                        <p class="m-0 text-small text-navy-500 max-w-[44ch]">
+                          Verschlüsselte Ablage, nachvollziehbare Änderungen.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="m-0 mt-6 pt-4 border-t border-navy-500/16 text-[0.8125rem] text-navy-500">
+              5 Schichten von außen nach innen, vom Rechenzentrum bis zum einzelnen Datenfeld.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Datenschutz -->
+  <section
+    id="datenschutz"
+    class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600 border-t border-navy-500/16"
+  >
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Datenschutz</span>
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,3.5rem)] items-start"
+      >
+        <div class="col-span-12 min-[62rem]:col-span-5">
+          <p
+            class="m-0 font-display font-medium text-lead leading-[1.6] tracking-[-0.015em] text-navy-900 max-w-[34ch] mb-5"
+            data-reveal
+          >
+            DSGVO konform verarbeiten heißt zuerst: so wenig Daten wie möglich.
+          </p>
+          <p class="m-0 text-navy-500 max-w-[46ch]" data-reveal style="--reveal-delay:80ms">
+            Wir erheben nur, was der Prozess wirklich braucht, halten die Verarbeitung innerhalb der
+            EU und regeln die Auftragsverarbeitung vertraglich.
+          </p>
+
+          <figure
+            class="m-0 mt-[clamp(2rem,4vw,2.75rem)]"
+            data-reveal
+            style="--reveal-delay:140ms"
+          >
+            <div class="flex justify-between gap-4 mb-2.5">
+              <span class="font-display font-medium text-xs tracking-[0.08em] uppercase text-navy-500">
+                Angefallene Felder
+              </span>
+              <span class="font-display font-medium text-xs tracking-[0.08em] uppercase text-brand-700 text-right">
+                Tatsächlich verarbeitet
+              </span>
+            </div>
+
+            <svg class="block w-full h-auto max-w-[26rem]" viewBox="0 0 320 72" aria-hidden="true">
+              <defs>
+                <linearGradient id="taper" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="var(--color-navy-300)" stop-opacity="0.55"></stop>
+                  <stop offset="1" stop-color="var(--color-brand-600)" stop-opacity="1"></stop>
+                </linearGradient>
+              </defs>
+              <path
+                d="M 6 8 L 314 30 L 314 42 L 6 64 Z"
+                fill="url(#taper)"
+                stroke="url(#taper)"
+                stroke-width="8"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <figcaption class="mt-4 text-[0.8125rem] text-navy-500 max-w-[44ch]">
+              Datensparsamkeit: verarbeitet wird nur, was der Prozess erfordert.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div
+          class="col-span-12 min-[62rem]:col-start-7 min-[62rem]:col-span-6"
+          data-reveal
+          style="--reveal-delay:120ms"
+        >
+          <div class="relative rounded-panel bg-white border border-navy-500/14 p-[clamp(1.75rem,3.5vw,3rem)]">
+            <ul class="flex flex-col m-0 p-0 list-none">
+              {
+                privacyPoints.map((pt) => (
+                  <li class="flex gap-4 py-[1.125rem] border-t border-navy-500/16 first:border-t-0 first:pt-0">
+                    <span
+                      class="block shrink-0 w-[1.125rem] h-[3px] rounded-full bg-brand-600 mt-[0.72em]"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-1">
+                        {pt.title}
+                      </h3>
+                      <p class="m-0 text-small text-navy-500 max-w-[46ch]">{pt.text}</p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beratung -->
+  <section id="beratung" class="relative py-[var(--spacing-section)] bg-brand-300 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)]">
+        <div class="col-span-12 min-[62rem]:col-span-7">
+          <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+            <h2
+              class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+            >
+              <span
+                class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-navy-600 -translate-y-[0.32em]"
+                aria-hidden="true"></span><span
+                >Unterstützung bei IT Zertifizierungen und Cyberversicherungen</span
+              >
+            </h2>
+          </div>
+          <p class="m-0 text-navy-500 max-w-[56ch]" data-reveal>
+            Wir begleiten Betriebe bei den technischen Anforderungen von IT Zertifizierungen und bei
+            den Nachweisen, die Cyberversicherer verlangen.
+          </p>
+          <div class="mt-8" data-reveal style="--reveal-delay:80ms">
+            <Button href="/kontakt?betreff=sicherheit" variant="primary-invert">
+              Sicherheitskonzept anfragen
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CrossLinks
+    items={[
+      {
+        label: 'Leistungen',
+        href: '/leistungen',
+        text: 'Wo Sicherheit in unsere Arbeit einfließt: Schnittstellen, Hosting und Beratung.',
+      },
+      {
+        label: 'Datenschutzerklärung',
+        href: '/datenschutz',
+        text: 'Wie wir mit Daten auf dieser Website selbst umgehen.',
+      },
+    ]}
+  />
+</Layout>

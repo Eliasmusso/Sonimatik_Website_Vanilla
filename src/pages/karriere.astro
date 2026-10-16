@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+
+const tasks = [
+  'Weiterentwicklung bestehender Plattformen',
+  'Anbindung von ERP, DATEV und Systemen zur elektronischen Rechnungsstellung',
+  'Automatisierung wiederkehrender Prozesse',
+];
+
+const stack = ['PHP', 'Laravel', 'Dolibarr', 'REST APIs', 'XRechnung / ZUGFeRD', 'Peppol'];
+
+const culture = [
+  {
+    title: 'Nah am Anwender',
+    text: 'Du siehst, was deine Software im Betrieb auslöst. Die Nutzer sind erreichbar, nicht anonym.',
+  },
+  {
+    title: 'Sicherheit von Anfang an',
+    text: 'Berechtigungen und Datenschutz sind Teil des Entwurfs, nicht ein späteres Ticket.',
+  },
+  {
+    title: 'Wachsendes Unternehmen',
+    text: 'Kurze Wege, wenig Hierarchie, Raum für eigene Entscheidungen.',
+  },
+];
+
+// TODO: Add team photos and concrete employee benefits once available.
+---
+
+<Layout
+  title="Karriere | Sonimatik"
+  description="Offene Stellen bei der Sonimatik GmbH in Heilbronn: aktuell PHP Webentwicklung für Plattformen und Schnittstellen im Gesundheitswesen."
+  noindex
+>
+  <PageHero
+    title="Arbeiten bei Sonimatik"
+    lead="Wir entwickeln Software, die im Tagesbetrieb von Fachbetrieben läuft. Wenn dich das mehr interessiert als das nächste Framework, passt es."
+  />
+
+  <section id="stellen" class="relative py-[var(--spacing-section)] bg-transparent">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Offene Stellen</span>
+        </h2>
+      </div>
+
+      <div class="max-w-[46rem]" data-reveal>
+        <div class="relative rounded-panel bg-navy-800 p-[clamp(1.75rem,3.5vw,3rem)]">
+          <p
+            class="m-0 font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-300 mb-3.5"
+          >
+            Vollzeit · Heilbronn
+          </p>
+          <h3 class="m-0 font-display font-bold text-white text-h3 leading-[1.25] tracking-[-0.012em] mb-3.5">
+            PHP Webentwickler:in
+          </h3>
+          <p class="m-0 text-grau-300 max-w-[52ch]">
+            Du arbeitest an unseren Plattformen und Schnittstellen von der Fachanwendung bis zur
+            elektronischen Rechnungsstellung.
+          </p>
+          <ul class="flex flex-col gap-2.5 mt-6 m-0 p-0 list-none">
+            {
+              tasks.map((t) => (
+                <li class="flex gap-3.5 text-small text-grau-200">
+                  <span
+                    class="block shrink-0 w-[1.125rem] h-[3px] rounded-full bg-brand-300 mt-[0.72em]"
+                    aria-hidden="true"
+                  />
+                  <span>{t}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="mt-8">
+            <Button href="/kontakt?betreff=karriere">Bewerbung senden</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="relative py-[var(--spacing-section)] bg-navy-800">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Womit wir arbeiten</span>
+        </h2>
+      </div>
+      <ul class="flex flex-wrap gap-2 m-0 p-0 list-none" data-reveal>
+        {
+          stack.map((it) => (
+            <li class="py-2 px-3.5 border border-white/14 rounded-control font-display font-medium text-sm text-grau-200">
+              {it}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section id="kultur" class="relative py-[var(--spacing-section)] bg-navy-700">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Wie wir arbeiten</span>
+        </h2>
+      </div>
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-[clamp(1.5rem,3vw,2.5rem)] m-0 p-0 list-none">
+        {
+          culture.map((c, i) => (
+            <li
+              class="pt-5 border-t border-white/8"
+              data-reveal
+              style={`--reveal-delay:${i * 70}ms`}
+            >
+              <h3 class="m-0 font-display font-bold text-white text-h4 tracking-[-0.01em] mb-2">
+                {c.title}
+              </h3>
+              <p class="m-0 text-small text-grau-300">{c.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>

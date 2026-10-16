@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+import SoniProtectForm from '../components/SoniProtectForm.svelte';
+
+const packages = [
+  {
+    badge: 'Paket I',
+    name: 'Datenschutzbasis',
+    price: '1.499 € einmalig',
+    subtext: 'Zusatzleistungen 149 €/Std.',
+    intro: null,
+    features: [
+      'Workshop zu bestehenden Dokumenten und Prozessen',
+      'Unterstützung bei der Dokumentation (Datenschutzkonzept, VVT, TOMs und vieles mehr)',
+      'Bereitstellung der wesentlichen Datenschutzunterlagen',
+      'Grundschulung Ihrer Mitarbeitenden per Videocall',
+    ],
+  },
+  {
+    badge: 'Paket II',
+    name: 'Datenschutzkoordinator',
+    price: '999 € einmalig + 49 €/Monat',
+    subtext: 'Mindestlaufzeit 24 Monate',
+    intro: 'Alle Leistungen wie im Datenschutzbasis Paket und zusätzlich:',
+    features: [
+      'Möglichkeit zur Teilnahme an regelmäßigen Webinaren und Schulungen',
+      'Jährliche Überprüfung der bereitgestellten Datenschutzdokumentation',
+      'Ansprechpartner für Ihre Datenschutzfragen (bis zu 1h pro Jahr inklusive)',
+    ],
+  },
+];
+---
+
+<Layout
+  title="SoniProtect: Datenschutz für Hörakustiker | Sonimatik"
+  description="SoniProtect von Sonimatik: DSGVO Sicherheit ohne Kopfschmerzen. Datenschutz für Hörakustiker: einfach, persönlich und praxisnah."
+>
+  <section class="pt-[clamp(4.5rem,9vw,7.5rem)] pb-[clamp(2.5rem,5vw,4rem)]">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <h1 class="m-0" data-reveal>
+        <img
+          src="/soniprotect-logo.png"
+          alt="SoniProtect"
+          width="819"
+          height="106"
+          class="block h-[clamp(2.5rem,6vw,4.25rem)] w-auto select-none"
+        />
+      </h1>
+
+      <p
+        class="m-0 mt-[clamp(1.25rem,2.5vw,1.75rem)] text-lead leading-[1.6] text-grau-200 max-w-[58ch]"
+        data-reveal
+        style="--reveal-delay:130ms"
+      >
+        Datenschutz für Hörakustiker. Einfach. Persönlich. Praxisnah. Mit SoniProtect sicher zur
+        DSGVO konformen Praxis.
+      </p>
+
+      <div class="mt-[clamp(1.75rem,3.5vw,2.5rem)]" data-reveal style="--reveal-delay:200ms">
+        <Button href="#anfrage">Jetzt unverbindlich informieren</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pakete -->
+  <section id="pakete" class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Unsere Pakete im Überblick</span>
+        </h2>
+      </div>
+      <p
+        class="m-0 text-lead leading-[1.6] text-navy-600 max-w-[54ch] mb-[clamp(2rem,4vw,2.75rem)]"
+        data-reveal
+      >
+        Jetzt unverbindlich informieren und weitere Unterlagen erhalten.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(1.5rem,3vw,2.5rem)] items-stretch">
+        {
+          packages.map((pkg, i) => (
+            <div
+              class="flex flex-col rounded-panel overflow-hidden bg-white border border-navy-500/14"
+              data-reveal
+              style={`--reveal-delay:${i * 100}ms`}
+            >
+              <div class="bg-navy-800 text-white p-[clamp(1.75rem,3.5vw,2.5rem)]">
+                <p class="m-0 font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-300 mb-3">
+                  {pkg.badge}
+                </p>
+                <h3 class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em]">
+                  {pkg.name}
+                </h3>
+                <p class="m-0 mt-5 font-display font-bold text-[clamp(1.375rem,2.4vw,1.875rem)] leading-[1.2] tracking-[-0.02em] text-brand-200">
+                  {pkg.price}
+                </p>
+                <p class="m-0 mt-1.5 text-small text-grau-300">{pkg.subtext}</p>
+              </div>
+
+              <div class="flex-1 flex flex-col justify-between p-[clamp(1.75rem,3.5vw,2.5rem)]">
+                <div>
+                  {pkg.intro && (
+                    <div class="flex items-start gap-3.5 pb-4 mb-4 border-b border-navy-500/16 font-display font-bold text-navy-900 text-small">
+                      <span
+                        class="inline-flex items-center justify-center shrink-0 w-5 h-5 rounded-full bg-brand-300/35 text-brand-700 font-display font-bold text-sm leading-none mt-0.5"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                      <span>{pkg.intro}</span>
+                    </div>
+                  )}
+
+                  <ul class="flex flex-col gap-4 m-0 p-0 list-none">
+                    {pkg.features.map((feat) => (
+                      <li class="flex items-start gap-3.5 text-navy-600 text-small">
+                        <span
+                          class="inline-flex items-center justify-center shrink-0 w-5 h-5 rounded-full bg-navy-800 text-brand-300 mt-0.5"
+                          aria-hidden="true"
+                        >
+                          <svg viewBox="0 0 16 16" width="12" height="12" fill="none">
+                            <path
+                              d="M3.5 8.5 6.5 11.5 12.5 4.5"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </span>
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-navy-500/14">
+                  <a
+                    href="#anfrage"
+                    class="inline-flex items-center gap-2 font-display font-bold text-[0.9375rem] text-brand-700 no-underline hover:text-navy-900"
+                  >
+                    <span>{pkg.badge} anfragen</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontaktformular SoniProtect -->
+  <section id="anfrage" class="relative py-[var(--spacing-section)] bg-transparent">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div
+        class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,3.5rem)] items-start"
+      >
+        <div class="col-span-12 min-[62rem]:col-span-4 min-[62rem]:sticky min-[62rem]:top-32">
+          <div class="mb-5" data-reveal>
+            <img
+              src="/soniprotect-logo.png"
+              alt="SoniProtect"
+              width="819"
+              height="106"
+              class="block h-6 w-auto select-none opacity-90"
+            />
+          </div>
+          <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal style="--reveal-delay:40ms">
+            <h2
+              class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+            >
+              <span
+                class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+                aria-hidden="true"></span><span>Mehr Informationen zu SoniProtect</span>
+            </h2>
+          </div>
+          <p
+            class="m-0 text-lead leading-[1.6] text-grau-200 max-w-[38ch] mb-[clamp(2rem,4vw,2.75rem)]"
+            data-reveal
+          >
+            Wir sind gerne für Sie da und senden Ihnen unverbindlich weitere Unterlagen zu.
+          </p>
+
+          <dl class="flex flex-col m-0" data-reveal style="--reveal-delay:80ms">
+            <div class="flex flex-col gap-1 py-4 border-t border-white/8">
+              <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-300">
+                Telefon
+              </dt>
+              <dd class="m-0 text-small text-grau-200">
+                <a
+                  href="tel:+49713177490"
+                  class="text-inherit no-underline border-b border-brand-300/30 transition-colors duration-200 hover:border-brand-300"
+                >
+                  +49 7131 77 49 0
+                </a>
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1 py-4 border-t border-white/8">
+              <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-300">
+                E Mail
+              </dt>
+              <dd class="m-0 text-small text-grau-200">
+                <a
+                  href="mailto:soniprotect@sonimatik.de"
+                  class="text-inherit no-underline border-b border-brand-300/30 transition-colors duration-200 hover:border-brand-300"
+                >
+                  soniprotect@sonimatik.de
+                </a>
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1 py-4 border-y border-white/8">
+              <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-300">
+                Anschrift
+              </dt>
+              <dd class="m-0 text-small text-grau-200">
+                <address class="not-italic leading-[1.6]">
+                  Sonimatik GmbH<br />
+                  Goethestraße 33<br />
+                  74076&nbsp;Heilbronn
+                </address>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div
+          class="col-span-12 min-[62rem]:col-start-6 min-[62rem]:col-span-7"
+          data-reveal
+          style="--reveal-delay:120ms"
+        >
+          <div class="relative rounded-panel bg-navy-800 p-[clamp(1.75rem,3.5vw,3rem)]">
+            <SoniProtectForm client:load />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CrossLinks
+    items={[
+      {
+        label: 'Technik & Sicherheit',
+        href: '/technik-sicherheit',
+        text: 'Wie wir Informationssicherheit und Datenschutz technisch umsetzen.',
+      },
+      {
+        label: 'Produkte & Referenzprojekte',
+        href: '/produkte',
+        text: 'McEmm und die Zentralfakturierung im täglichen Einsatz.',
+      },
+    ]}
+  />
+</Layout>

@@ -1,0 +1,44 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  lead?: string;
+  cta?: { label: string; href: string };
+}
+
+const { title, lead, cta } = Astro.props;
+---
+
+<section class="pt-[clamp(4.5rem,9vw,7.5rem)] pb-[clamp(2.5rem,5vw,4rem)]">
+  <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+    <h1
+      class="m-0 font-display font-bold text-white flex items-baseline gap-[0.34em] text-[clamp(2.25rem,5.4vw,4rem)] leading-none tracking-[-0.03em] max-w-[26ch]"
+      data-reveal
+    >
+      <span
+        class="shrink-0 w-[0.52em] h-[0.09em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.3em]"
+        aria-hidden="true"></span><span>{title}</span>
+    </h1>
+
+    {
+      lead && (
+        <p
+          class="m-0 mt-[clamp(1.25rem,2.5vw,1.75rem)] text-lead leading-[1.6] text-grau-200 max-w-[58ch]"
+          data-reveal
+          style="--reveal-delay:130ms"
+        >
+          {lead}
+        </p>
+      )
+    }
+
+    {
+      cta && (
+        <div class="mt-[clamp(1.75rem,3.5vw,2.5rem)]" data-reveal style="--reveal-delay:200ms">
+          <Button href={cta.href}>{cta.label}</Button>
+        </div>
+      )
+    }
+  </div>
+</section>

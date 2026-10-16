@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import WindowFrame from '../components/WindowFrame.astro';
+import PlattformHub from '../components/PlattformHub.astro';
+import { glyphs, GLYPH_VIEWBOX, type GlyphName } from '../components/glyphs';
+
+const entries: Array<{ title: string; text: string; href: string; icon: GlyphName }> = [
+  {
+    title: 'Leistungen',
+    text: 'Prozessautomatisierung, Plattformen und Schnittstellen.',
+    href: '/leistungen',
+    icon: 'automation',
+  },
+  {
+    title: 'Produkte',
+    text: 'McEmm und die Zentralfakturierung als Referenzen aus der Praxis.',
+    href: '/produkte',
+    icon: 'platform',
+  },
+  {
+    title: 'Technik & Sicherheit',
+    text: 'Zertifizierte Rechenzentren, verschlüsselte Schnittstellen, DSGVO.',
+    href: '/technik-sicherheit',
+    icon: 'shield',
+  },
+  {
+    title: 'Über uns',
+    text: 'Wer hinter Sonimatik steht und woher die Branchenkenntnis kommt.',
+    href: '/ueber-uns',
+    icon: 'company',
+  },
+];
+
+const pillars = [
+  {
+    title: 'Branchenspezialisierung',
+    text: 'Tiefes Fachwissen in der Hörakustik aus der täglichen Arbeit mit Fachbetrieben und Genossenschaften.',
+  },
+  {
+    title: 'Automatisierung',
+    text: 'Von der Auftragsabwicklung bis zur Zentralfakturierung: weniger manuelle Schritte, weniger Fehlerquellen.',
+  },
+  {
+    title: 'Sicherheit als Grundprinzip',
+    text: 'Sichere Infrastruktur, Rollenkonzepte und Berechtigungskonzepte, zertifizierte Rechenzentren.',
+  },
+  {
+    title: 'Modulare Architektur',
+    text: 'Offene Standards und Schnittstellenfähigkeit, damit einzelne Bereiche unabhängig wachsen können.',
+  },
+];
+---
+
+<Layout
+  title="Digitale Lösungen für die Hörakustik | Sonimatik"
+  description="Digitale Lösungen für die Hörakustik: Automatisierung, Digitalisierung und sichere IT Prozesse aus Heilbronn, Informationssicherheit inklusive."
+>
+  <!-- Hero -->
+  <section class="relative flex flex-col justify-center min-h-[calc(100svh-4.25rem-1px)] py-[clamp(3rem,6vh,5rem)]">
+    <div class="shrink-0">
+      <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+        <h1
+          class="m-0 font-display font-bold text-white text-[clamp(2.25rem,7vw,5.5rem)] leading-[1.04] tracking-[-0.025em] max-w-[18ch]"
+          data-reveal
+        >
+          <span class="block" style="--reveal-delay:0ms">Digitale Lösungen </span>
+          <span class="block" style="--reveal-delay:90ms"
+            >für die <span class="text-brand-300">Hörakustik</span></span
+          >
+        </h1>
+
+        <div
+          class="mt-[clamp(1.75rem,4vh,2.75rem)] grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-6 md:items-start"
+        >
+          <p
+            class="col-span-12 md:col-span-5 m-0 text-small leading-[1.65] text-grau-200 max-w-[52ch]"
+            data-reveal
+            style="--reveal-delay:220ms"
+          >
+            Wir automatisieren Prozesse im medizinischen Umfeld als Technologieunternehmen aus
+            Heilbronn. Informationssicherheit und Datenschutz gehören zu jeder Lösung, nicht als
+            Zusatz.
+          </p>
+
+          <ul
+            class="col-span-12 md:col-span-3 flex flex-wrap md:flex-col gap-y-1.5 gap-x-6 md:gap-2 m-0 p-0 list-none font-display font-medium text-xs tracking-[0.12em] uppercase text-grau-300 md:border-l md:border-white/14 md:pl-[clamp(1rem,2.5vw,2rem)] md:self-stretch"
+            data-reveal
+            style="--reveal-delay:290ms"
+          >
+            <li>Individuell</li>
+            <li>Effizient</li>
+            <li>Zukunftssicher</li>
+          </ul>
+
+          <div
+            class="col-span-12 md:col-span-4 flex items-center flex-wrap gap-y-3.5 gap-x-[clamp(1.25rem,3vw,1.75rem)] md:border-l md:border-white/14 md:pl-[clamp(1rem,2.5vw,2rem)] md:self-stretch"
+            data-reveal
+            style="--reveal-delay:360ms"
+          >
+            <Button href="/kontakt">Kontakt aufnehmen</Button>
+            <a
+              class="inline-flex items-center gap-2 font-display font-medium text-[0.9375rem] text-white no-underline py-1 border-b border-white/14 transition-colors duration-160 hover:border-brand-300"
+              href="/leistungen"
+            >
+              Zu den Leistungen
+              <svg
+                class="w-3.5 h-3.5 shrink-0"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2.5 8h10M9 4.5 12.5 8 9 11.5"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kennzahl -->
+  <section id="kennzahl" class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div
+        class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,3.5rem)] items-start"
+      >
+        <p
+          class="col-span-12 min-[62rem]:col-span-5 m-0 max-w-none font-display font-medium text-[clamp(1.25rem,2.6vw,2rem)] leading-[1.35] tracking-[-0.02em] text-navy-600 text-balance"
+          data-reveal
+        >
+          Rund
+          <span
+            class="font-bold text-[1.9em] leading-[0.8] tracking-[-0.04em] text-brand-700 inline-block translate-y-[0.09em] mx-[0.06em] tabular-nums"
+            >400</span
+          >
+          Mitgliedsbetriebe arbeiten täglich mit McEmm, der Plattform, die wir entwickelt haben und
+          betreiben.
+          <a
+            class="inline-flex items-center gap-[0.4em] ml-[0.4em] text-[0.62em] text-brand-700 no-underline border-b border-navy-500/30 hover:border-brand-600"
+            href="/produkte"
+          >
+            Zum Projekt
+            <svg
+              class="w-3.5 h-3.5 shrink-0"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2.5 8h10M9 4.5 12.5 8 9 11.5"></path>
+            </svg>
+          </a>
+        </p>
+
+        <div
+          class="col-span-12 min-[62rem]:col-start-7 min-[62rem]:col-span-6"
+          data-reveal
+          style="--reveal-delay:120ms"
+        >
+          <WindowFrame title="Plattformtopologie schematisch" meta="Struktur">
+            <PlattformHub />
+          </WindowFrame>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direkteinstiege -->
+  <section
+    id="einstiege"
+    class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600 border-t border-navy-500/16"
+  >
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Themen im Überblick</span>
+        </h2>
+      </div>
+
+      <ul class="flex flex-col m-0 p-0 list-none">
+        {
+          entries.map((e, i) => (
+            <li
+              data-reveal
+              style={`--reveal-delay:${i * 70}ms`}
+              class="last:border-b last:border-navy-500/16"
+            >
+              <a
+                href={e.href}
+                class="group flex items-center gap-[clamp(0.875rem,2vw,1.5rem)] py-[clamp(1.25rem,2.5vw,1.75rem)] border-t border-navy-500/16 no-underline text-brand-700 transition-all duration-240 hover:border-t-brand-300/35 hover:bg-[linear-gradient(90deg,rgb(170_207_223/0.07)_0%,rgb(170_207_223/0)_70%)] hover:pl-3"
+              >
+                <svg
+                  viewBox={GLYPH_VIEWBOX}
+                  fill="currentColor"
+                  class="w-[1.375rem] h-[1.375rem] shrink-0"
+                  aria-hidden="true"
+                  set:html={glyphs[e.icon]}
+                />
+                <span class="flex-1 flex flex-col gap-1 min-w-0">
+                  <span class="font-display font-bold text-h3 leading-[1.25] tracking-[-0.012em] text-navy-900">
+                    {e.title}
+                  </span>
+                  <span class="text-small text-navy-500 max-w-[54ch]">{e.text}</span>
+                </span>
+                <svg
+                  class="w-4 h-4 shrink-0 transition-transform duration-240 group-hover:translate-x-1"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2.5 8h10M9 4.5 12.5 8 9 11.5" />
+                </svg>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Positionierungssäulen -->
+  <section id="warum" class="relative py-[var(--spacing-section)] bg-brand-300 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-navy-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Warum Sonimatik</span>
+        </h2>
+      </div>
+      <p class="m-0 text-navy-600 max-w-[48ch] mb-[clamp(2rem,4vw,2.75rem)]" data-reveal>
+        Vier Punkte, die unsere Arbeit prägen.
+      </p>
+      <ul
+        class="grid grid-cols-1 md:grid-cols-2 gap-y-[clamp(1.5rem,3vw,2.5rem)] gap-x-[clamp(1.5rem,4vw,3rem)] m-0 p-0 list-none"
+      >
+        {
+          pillars.map((p, i) => (
+            <li
+              class="pt-5 border-t border-navy-500/22"
+              data-reveal
+              style={`--reveal-delay:${i * 70}ms`}
+            >
+              <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-2">
+                {p.title}
+              </h3>
+              <p class="m-0 text-small text-navy-500 max-w-[46ch]">{p.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Abschluss -->
+  <section id="abschluss" class="relative py-[var(--spacing-section)] bg-transparent">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)]">
+        <div class="col-span-12 min-[62rem]:col-span-7">
+          <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+            <h2
+              class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+            >
+              <span
+                class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+                aria-hidden="true"></span><span>Sprechen wir über Ihren Prozess</span>
+            </h2>
+          </div>
+          <p class="m-0 text-lead leading-[1.6] text-grau-200 max-w-[48ch]" data-reveal>
+            Beschreiben Sie kurz, woran es hakt. Wir melden uns mit einer Einschätzung zurück.
+          </p>
+          <div class="mt-8" data-reveal style="--reveal-delay:80ms">
+            <Button href="/kontakt">Kontakt aufnehmen</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,261 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import MobileNav from '../components/MobileNav.svelte';
+import WaveField from '../components/WaveField.svelte';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+
+const SITE_URL = 'https://www.sonimatik.de';
+// TODO: Replace placeholder email address info@sonimatik.de with the actual contact email before publishing.
+const CONTACT_EMAIL = 'info@sonimatik.de';
+
+const nav = [
+  { label: 'Leistungen', href: '/leistungen' },
+  { label: 'Produkte', href: '/produkte' },
+  { label: 'SoniProtect', href: '/soniprotect' },
+  { label: 'Technik & Sicherheit', href: '/technik-sicherheit' },
+  { label: 'Über uns', href: '/ueber-uns' },
+];
+
+const footerNav = [...nav, { label: 'Kontakt', href: '/kontakt' }];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html
+  lang="de"
+  class="no-js scroll-smooth scroll-pt-26 [color-scheme:dark] [scrollbar-color:var(--color-navy-400)_var(--color-navy-900)] [scrollbar-width:thin]"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080E1C" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content={path === '/' ? 'website' : 'article'} />
+    <meta property="og:site_name" content="Sonimatik" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE_URL}/og-image.png`} />
+
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
+  </head>
+
+  <body
+    class="m-0 bg-navy-900 text-grau-300 font-sans text-body leading-[1.7] antialiased overflow-x-hidden selection:bg-brand-300 selection:text-navy-900"
+  >
+    <div
+      class="fixed inset-0 -z-20 pointer-events-none bg-[radial-gradient(120%_90%_at_12%_4%,rgb(29_46_77/0.55)_0%,transparent_58%),radial-gradient(90%_70%_at_88%_96%,rgb(28_65_80/0.38)_0%,transparent_60%),radial-gradient(70%_55%_at_50%_50%,rgb(8_14_28/0)_0%,rgb(8_14_28/0.72)_100%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <WaveField client:idle />
+
+    <header class="sticky top-0 z-30 bg-navy-900 border-b border-white/9">
+      <div
+        class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)] flex items-center justify-between gap-[clamp(1rem,3vw,2.5rem)] min-h-[4.25rem]"
+      >
+        <a href="/" class="no-underline shrink-0" aria-label="Sonimatik Startseite">
+          <Logo size="sm" />
+        </a>
+
+        <nav class="hidden lg:block" aria-label="Hauptnavigation">
+          <ul class="flex items-center gap-[clamp(1.25rem,2.6vw,2.25rem)] m-0 p-0 list-none">
+            {
+              nav.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <li>
+                    <a
+                      href={item.href}
+                      aria-current={active ? 'page' : undefined}
+                      class:list={[
+                        'text-[0.9375rem] no-underline whitespace-nowrap transition-colors duration-180',
+                        active
+                          ? 'text-white relative after:content-[""] after:absolute after:left-0 after:-bottom-2 after:w-[1.125rem] after:h-[2px] after:rounded-full after:bg-brand-300'
+                          : 'text-grau-300 hover:text-white',
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <a
+            href="/kontakt"
+            class="hidden lg:inline-block py-2 px-4 rounded-control border border-white/20 font-display font-medium text-sm text-white no-underline whitespace-nowrap transition-colors duration-180 hover:border-brand-300 hover:text-brand-300"
+          >
+            Kontakt
+          </a>
+          <div class="lg:hidden">
+            <MobileNav client:idle items={nav} ctaLabel="Kontakt" ctaHref="/kontakt" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt" class="block">
+      <slot />
+    </main>
+
+    <footer class="relative pt-[clamp(4rem,8vw,6rem)] pb-10 border-t border-white/8 bg-transparent">
+      <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+        <div
+          class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-12 pb-[clamp(3rem,6vw,4.5rem)]"
+        >
+          <div class="col-span-12 md:col-span-4">
+            <Logo size="lg" />
+            <p class="mt-[1.125rem] text-small text-grau-300 max-w-[22ch]">
+              Ein Unternehmen der Meditrend eG
+            </p>
+          </div>
+
+          <div class="col-span-6 md:col-span-4">
+            <h2
+              class="m-0 mb-[1.125rem] font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-300"
+            >
+              Navigation
+            </h2>
+            <ul class="flex flex-col gap-2.5 m-0 p-0 list-none">
+              {
+                footerNav.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class="text-small text-grau-300 no-underline transition-colors duration-200 hover:text-brand-200"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="col-span-6 md:col-span-4">
+            <h2
+              class="m-0 mb-[1.125rem] font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-300"
+            >
+              Kontakt
+            </h2>
+            <address class="m-0 mb-3.5 not-italic text-small text-grau-300">
+              Goethestraße 33<br />
+              74076&nbsp;Heilbronn
+            </address>
+            <ul class="flex flex-col gap-2.5 m-0 p-0 list-none">
+              <li>
+                <a
+                  href="tel:+49713177490"
+                  class="text-small text-grau-300 no-underline transition-colors duration-200 hover:text-brand-200"
+                >
+                  +49 7131 77 49 0
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  class="text-small text-grau-300 no-underline transition-colors duration-200 hover:text-brand-200"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p
+          class="flex flex-wrap gap-y-1 gap-x-5 pb-6 text-[0.8125rem] leading-[1.5] text-grau-300 m-0 max-w-none"
+        >
+          <span class="after:content-['·'] after:ml-5 after:opacity-50"
+            >Geschäftsführer: Eduard Breitenbach</span
+          >
+          <span class="after:content-['·'] after:ml-5 after:opacity-50"
+            >Amtsgericht Stuttgart HRB 793163</span
+          >
+          <span>Umsatzsteuer ID DE366417901</span>
+        </p>
+
+        <div class="flex flex-wrap items-center justify-between gap-y-4 gap-x-8 pt-8 border-t border-white/8">
+          <p class="m-0 text-sm text-grau-300">© {year} Sonimatik GmbH</p>
+          <ul class="flex gap-6 m-0 p-0 list-none">
+            <li>
+              <a
+                href="/impressum"
+                class="text-sm text-grau-300 no-underline transition-colors duration-200 hover:text-brand-200"
+              >
+                Impressum
+              </a>
+            </li>
+            <li>
+              <a
+                href="/datenschutz"
+                class="text-sm text-grau-300 no-underline transition-colors duration-200 hover:text-brand-200"
+              >
+                Datenschutz
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+      if (reduce.matches) {
+        targets.forEach((el) => el.setAttribute('data-reveal', 'shown'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.setAttribute('data-reveal', 'shown');
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px', threshold: 0 },
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      }
+    </script>
+  </body>
+</html>

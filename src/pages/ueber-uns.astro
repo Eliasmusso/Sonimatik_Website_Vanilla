@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+
+const attributes = ['Seriös', 'Technologisch', 'Innovativ', 'Modern', 'Klar'];
+
+const competences = [
+  {
+    title: 'Softwareentwicklung',
+    text: 'Moderne, modulare Architekturen auf Basis von PHP und Laravel, angebunden über offene Standards.',
+  },
+  {
+    title: 'Branchenerfahrung Hörakustik',
+    text: 'Kenntnis der Abläufe in Fachbetrieben, Genossenschaften und der Abrechnung mit Kostenträgern.',
+  },
+  {
+    title: 'Informationssicherheit',
+    text: 'Sichere Infrastruktur, Berechtigungskonzepte und Begleitung bei Zertifizierungen.',
+  },
+];
+
+const groups = [
+  {
+    title: 'Hörakustikfachbetriebe',
+    text: 'Einzelbetriebe und Filialstrukturen, die ihre Abläufe digitalisieren wollen, ohne den laufenden Betrieb zu unterbrechen. Von der Erfassung im Tagesgeschäft bis zur Abrechnung mit Kostenträgern.',
+  },
+  {
+    title: 'Genossenschaften und Einkaufsverbände',
+    text: 'Verbünde im Gesundheitswesen, die viele Mitgliedsbetriebe koordinieren. Hier liegt der Nutzen in gemeinsamen Stammdaten, Konditionen und einer zentralen Fakturierung.',
+  },
+  {
+    title: 'Unternehmen außerhalb der Branche',
+    text: 'Betriebe mit vergleichbaren Anforderungen an Prozesse, Datenhaltung und Sicherheit, auch branchenübergreifend, wenn keine Standardlösung passt.',
+  },
+];
+
+// TODO: Add team and office photos as well as founding year timeline once provided.
+---
+
+<Layout
+  title="Über uns: Technologieunternehmen aus Heilbronn | Sonimatik"
+  description="Sonimatik GmbH ist die Digitalisierungstochter der Meditrend eG mit Branchenerfahrung in der Hörakustik seit 1989, heute in der Softwareentwicklung."
+>
+  <PageHero
+    title="Technologische Klarheit, praxisnah"
+    lead="Sonimatik steht für technologische Klarheit und praxisnahe Digitalisierung in der Hörakustik."
+    cta={{ label: 'Kontakt aufnehmen', href: '/kontakt?betreff=allgemein' }}
+  />
+
+  <section id="woher" class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Woher wir kommen</span>
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,4rem)]"
+      >
+        <div class="col-span-12 min-[62rem]:col-span-6">
+          <p
+            class="m-0 font-display font-medium text-lead leading-[1.6] tracking-[-0.015em] text-navy-900 max-w-[40ch]"
+            data-reveal
+          >
+            Die Sonimatik GmbH ist die Digitalisierungstochter der Meditrend eG und wurde
+            gegründet, um die Genossenschaft technisch weiterzuentwickeln.
+          </p>
+          <p class="m-0 mt-5 text-navy-500 max-w-[68ch]" data-reveal style="--reveal-delay:80ms">
+            Die Genossenschaft ist seit 1989 in der Hörakustik verankert. Auf diese
+            Branchenerfahrung greifen wir zurück, wenn wir Software für Fachbetriebe bauen. Wir
+            kennen die Abläufe, die wir digitalisieren.
+          </p>
+          <p class="m-0 mt-5 text-navy-500 max-w-[68ch]" data-reveal style="--reveal-delay:160ms">
+            Gleichzeitig ist die Meditrend eG unser Referenzkunde: die Plattform McEmm und die
+            Zentralfakturierung laufen dort im Tagesbetrieb.
+          </p>
+        </div>
+
+        <div
+          class="col-span-12 min-[62rem]:col-start-8 min-[62rem]:col-span-5"
+          data-reveal
+          style="--reveal-delay:140ms"
+        >
+          <div class="relative rounded-panel bg-white border border-navy-500/14 p-[clamp(1.75rem,3.5vw,3rem)]">
+            <h3 class="m-0 font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-700 mb-6">
+              Woran wir uns halten
+            </h3>
+            <ul class="flex flex-col m-0 p-0 list-none">
+              {
+                attributes.map((label) => (
+                  <li class="flex items-center gap-4 py-3.5 border-t border-navy-500/16 first:border-t-0 first:pt-0 last:pb-0">
+                    <span
+                      class="block shrink-0 w-[1.125rem] h-[3px] rounded-full bg-brand-600"
+                      aria-hidden="true"
+                    />
+                    <span class="font-display font-bold text-[clamp(1.125rem,1.6vw,1.375rem)] tracking-[-0.015em] text-navy-900">
+                      {label}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="kompetenzen"
+    class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600 border-t border-navy-500/16"
+  >
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Was wir mitbringen</span>
+        </h2>
+      </div>
+      <ul class="flex flex-col m-0 p-0 list-none">
+        {
+          competences.map((c, i) => (
+            <li
+              class="py-[clamp(1.5rem,3vw,2rem)] border-t border-navy-500/16 last:border-b last:border-navy-500/16"
+              data-reveal
+              style={`--reveal-delay:${i * 80}ms`}
+            >
+              <h3 class="m-0 font-display font-bold text-navy-900 text-h3 leading-[1.25] tracking-[-0.012em] mb-2">
+                {c.title}
+              </h3>
+              <p class="m-0 text-navy-500 max-w-[56ch]">{c.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section
+    id="zielgruppen"
+    class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600 border-t border-navy-500/16"
+  >
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Für wen wir arbeiten</span>
+        </h2>
+      </div>
+      <p
+        class="m-0 text-lead leading-[1.6] text-navy-600 max-w-[54ch] mb-[clamp(2rem,4vw,2.75rem)]"
+        data-reveal
+      >
+        Unser Schwerpunkt liegt in der Hörakustik. Die Technik dahinter ist nicht darauf beschränkt.
+      </p>
+      <ul class="flex flex-col m-0 p-0 list-none">
+        {
+          groups.map((group, i) => (
+            <li
+              class="py-[clamp(1.5rem,3vw,2rem)] border-t border-navy-500/16 last:border-b last:border-navy-500/16"
+              data-reveal
+              style={`--reveal-delay:${i * 80}ms`}
+            >
+              <h3 class="m-0 font-display font-bold text-navy-900 text-h3 leading-[1.25] tracking-[-0.012em] mb-2">
+                {group.title}
+              </h3>
+              <p class="m-0 text-navy-500 max-w-[56ch]">{group.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section id="mission" class="relative py-[var(--spacing-section)] bg-brand-300 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)]">
+        <div class="col-span-12 min-[62rem]:col-span-7">
+          <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+            <h2
+              class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+            >
+              <span
+                class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-navy-600 -translate-y-[0.32em]"
+                aria-hidden="true"></span><span>Wofür wir arbeiten</span>
+            </h2>
+          </div>
+          <p class="m-0 text-lead leading-[1.6] text-navy-600 max-w-[52ch]" data-reveal>
+            Technologische Klarheit und praxisnahe Digitalisierung: Software soll den Betriebsalltag
+            vereinfachen, nicht um sich selbst kreisen.
+          </p>
+
+          <div
+            class="mt-[clamp(2.5rem,5vw,3.5rem)] pt-8 border-t border-navy-500/22"
+            data-reveal
+            style="--reveal-delay:100ms"
+          >
+            <h3 class="m-0 font-display font-bold text-navy-900 text-h4 tracking-[-0.01em] mb-2">
+              Standort Heilbronn
+            </h3>
+            <p class="m-0 text-small text-navy-500 max-w-[52ch]">
+              Wir arbeiten aus Heilbronn in Baden Württemberg, einer Region mit dichtem Netz aus
+              Mittelstand und Technologie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CrossLinks
+    items={[
+      {
+        label: 'Produkte & Referenzprojekte',
+        href: '/produkte',
+        text: 'Woran wir arbeiten und was im Tagesbetrieb läuft.',
+      },
+      {
+        label: 'Leistungen',
+        href: '/leistungen',
+        text: 'Die Felder, in denen wir unterwegs sind.',
+      },
+    ]}
+  />
+</Layout>

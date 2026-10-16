@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.svelte';
+
+// TODO: Replace placeholder email address info@sonimatik.de with the actual contact email before publishing.
+const CONTACT_EMAIL = 'info@sonimatik.de';
+---
+
+<Layout
+  title="Kontakt | Sonimatik"
+  description="Anfragen zu McEmm, Zentralfakturierung, Schnittstellen oder Informationssicherheit. Sonimatik GmbH, Goethestraße 33, 74076 Heilbronn."
+>
+  <PageHero
+    title="Sprechen wir darüber"
+    lead="Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung zurück."
+  />
+
+  <section id="kontakt" class="relative py-[var(--spacing-section)] bg-transparent">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div
+        class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,3.5rem)] items-start"
+      >
+        <div class="col-span-12 min-[62rem]:col-span-4 min-[62rem]:sticky min-[62rem]:top-32">
+          <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+            <h2
+              class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+            >
+              <span
+                class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+                aria-hidden="true"></span><span>Kontakt</span>
+            </h2>
+          </div>
+          <p
+            class="m-0 text-lead leading-[1.6] text-grau-200 max-w-[38ch] mb-[clamp(2rem,4vw,2.75rem)]"
+            data-reveal
+          >
+            Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung zurück.
+          </p>
+
+          <dl class="flex flex-col m-0" data-reveal style="--reveal-delay:80ms">
+            <div class="flex flex-col gap-1 py-4 border-t border-white/8">
+              <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-300">
+                Telefon
+              </dt>
+              <dd class="m-0 text-small text-grau-200">
+                <a
+                  href="tel:+49713177490"
+                  class="text-inherit no-underline border-b border-brand-300/30 transition-colors duration-200 hover:border-brand-300"
+                >
+                  +49 7131 77 49 0
+                </a>
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1 py-4 border-t border-white/8">
+              <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-300">
+                E Mail
+              </dt>
+              <dd class="m-0 text-small text-grau-200">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  class="text-inherit no-underline border-b border-brand-300/30 transition-colors duration-200 hover:border-brand-300"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1 py-4 border-y border-white/8">
+              <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-300">
+                Anschrift
+              </dt>
+              <dd class="m-0 text-small text-grau-200">
+                <address class="not-italic leading-[1.6]">
+                  Sonimatik GmbH<br />
+                  Goethestraße 33<br />
+                  74076&nbsp;Heilbronn
+                </address>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div
+          class="col-span-12 min-[62rem]:col-start-6 min-[62rem]:col-span-7"
+          data-reveal
+          style="--reveal-delay:120ms"
+        >
+          <div class="relative rounded-panel bg-navy-800 p-[clamp(1.75rem,3.5vw,3rem)]">
+            <ContactForm client:load />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

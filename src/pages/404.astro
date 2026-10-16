@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const nav = [
+  { label: 'Leistungen', href: '/leistungen' },
+  { label: 'Produkte', href: '/produkte' },
+  { label: 'SoniProtect', href: '/soniprotect' },
+  { label: 'Technik & Sicherheit', href: '/technik-sicherheit' },
+  { label: 'Über uns', href: '/ueber-uns' },
+];
+---
+
+<Layout
+  title="Seite nicht gefunden"
+  description="Die angeforderte Seite existiert nicht."
+  noindex
+>
+  <section class="flex items-center min-h-[min(100svh,48rem)] py-[clamp(6rem,12vh,9rem)]">
+    <div
+      class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)] grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)]"
+    >
+      <div class="col-span-12 md:col-span-7">
+        <p
+          class="m-0 flex items-center gap-3 mb-6 font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-brand-300"
+        >
+          <span class="block w-6 h-[3px] rounded-full bg-current" aria-hidden="true"></span>
+          Fehler 404
+        </p>
+        <h1
+          class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] mb-5"
+        >
+          Diese Seite gibt es nicht
+        </h1>
+        <p class="m-0 text-lead leading-[1.6] text-grau-300 max-w-[42ch]">
+          Die Adresse existiert nicht oder wurde geändert. Über die Startseite finden Sie alle
+          Inhalte.
+        </p>
+
+        <div class="mt-9">
+          <Button href="/">Zur Startseite</Button>
+        </div>
+
+        <nav class="mt-9" aria-label="Weitere Bereiche">
+          <p
+            class="m-0 font-display font-medium text-eyebrow tracking-[0.12em] uppercase text-grau-300 mb-4"
+          >
+            Direkt zu
+          </p>
+          <ul class="flex flex-wrap gap-y-3 gap-x-7 m-0 p-0 list-none">
+            {
+              nav.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="text-small text-grau-300 no-underline border-b border-brand-300/28 transition-colors duration-200 hover:border-brand-300 hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+</Layout>

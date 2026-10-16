@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import WindowFrame from '../components/WindowFrame.astro';
+import Button from '../components/Button.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+import BelegPipeline from '../components/BelegPipeline.astro';
+import PlattformHub from '../components/PlattformHub.astro';
+
+const items = [
+  {
+    id: 'mcemm',
+    name: 'McEmm',
+    kicker: 'B2B Plattform',
+    claim: 'Die Plattform für die Hörakustikbranche',
+    text: 'McEmm verbindet die Mitgliedsbetriebe der Meditrend eG mit Industrie und Lieferanten. Bestellungen, Konditionen und Stammdaten laufen über eine gemeinsame Oberfläche statt über Einzelabsprachen.',
+    figure: 'hub' as const,
+    tone: 'light' as const,
+    facts: [
+      { label: 'Nutzung', value: 'rund 400 Mitgliedsbetriebe' },
+      { label: 'Rolle', value: 'Entwicklung und laufender Betrieb' },
+      { label: 'Aufbau', value: 'modular, über Schnittstellen angebunden' },
+    ],
+    cta: { label: 'Anfrage zu McEmm', href: '/kontakt?betreff=mcemm' },
+  },
+  {
+    id: 'zentralfakturierung',
+    name: 'Zentralfakturierung',
+    kicker: 'Automatisierte Fakturierung',
+    claim: 'Aus vielen Einzelbelegen wird eine Rechnung',
+    text: 'Für die Meditrend eG bündeln wir Einzelbelege automatisiert zu Sammelrechnungen, erzeugen daraus elektronische Rechnungen in den geforderten Formaten und archivieren sie revisionssicher.',
+    figure: 'pipeline' as const,
+    tone: 'light' as const,
+    facts: [
+      { label: 'Formate', value: 'XRechnung, ZUGFeRD' },
+      { label: 'Versandweg', value: 'Peppol über B2Brouter' },
+      { label: 'Archivierung', value: 'revisionssicher' },
+    ],
+    cta: { label: 'Anfrage zur Zentralfakturierung', href: '/kontakt?betreff=zentralfakturierung' },
+  },
+  {
+    id: 'fachanwendungen',
+    name: 'Individuelle Fachanwendungen',
+    kicker: 'Speziallösungen',
+    claim: 'Für Anforderungen, die keine Standardlösung abdeckt',
+    text: 'Wenn Prozesse zu spezifisch für Standardsoftware sind, entwickeln wir Fachanwendungen für Partnerbetriebe und Kooperationen im Zuschnitt auf den konkreten Ablauf.',
+    figure: 'none' as const,
+    tone: 'invert' as const,
+    facts: [
+      { label: 'Einsatz', value: 'Partnerbetriebe und Kooperationen' },
+      { label: 'Basis', value: 'PHP/Laravel, offene Standards' },
+    ],
+    cta: { label: 'Vorhaben beschreiben', href: '/kontakt?betreff=allgemein' },
+  },
+];
+---
+
+<Layout
+  title="Produkte & Referenzprojekte | Sonimatik"
+  description="McEmm, die B2B Plattform für rund 400 Hörakustikbetriebe, und die Zentralfakturierung mit XRechnung und ZUGFeRD als Referenzen aus der Praxis."
+>
+  <PageHero
+    title="Referenzprojekte"
+    lead="Zwei Systeme zeigen am besten, was wir bauen: eine B2B Plattform im täglichen Einsatz und eine vollständig automatisierte Fakturierung."
+  />
+
+  {
+    items.map((item, i) => {
+      const isInvert = item.tone === 'invert';
+      return (
+        <section
+          id={item.id}
+          class:list={[
+            'relative py-[var(--spacing-section)] text-navy-600',
+            isInvert ? 'bg-brand-300' : 'bg-brand-50',
+            i === 1 && 'border-t border-navy-500/16',
+          ]}
+        >
+          <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+            <div class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-[clamp(2.5rem,5vw,3.5rem)] items-start">
+              <div class="col-span-12 min-[62rem]:col-span-5">
+                <p
+                  class:list={[
+                    'm-0 flex items-center gap-3 mb-4 font-display font-medium text-eyebrow tracking-[0.12em] uppercase',
+                    isInvert ? 'text-navy-700' : 'text-brand-700',
+                  ]}
+                  data-reveal
+                >
+                  <span class="block w-6 h-[3px] rounded-full bg-current" aria-hidden="true" />
+                  {item.kicker}
+                </p>
+                <h2
+                  class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em]"
+                  data-reveal
+                  style="--reveal-delay:60ms"
+                >
+                  {item.name}
+                </h2>
+                <p
+                  class:list={[
+                    'm-0 mt-3.5 font-display font-medium text-lead leading-[1.4] tracking-[-0.015em] max-w-[30ch]',
+                    isInvert ? 'text-navy-700' : 'text-brand-700',
+                  ]}
+                  data-reveal
+                  style="--reveal-delay:110ms"
+                >
+                  {item.claim}
+                </p>
+                <p
+                  class="m-0 mt-5 text-navy-500 max-w-[48ch]"
+                  data-reveal
+                  style="--reveal-delay:160ms"
+                >
+                  {item.text}
+                </p>
+
+                <dl
+                  class="flex flex-col m-0 mt-[clamp(1.75rem,3.5vw,2.25rem)]"
+                  data-reveal
+                  style="--reveal-delay:210ms"
+                >
+                  {item.facts.map((f) => (
+                    <div
+                      class:list={[
+                        'flex flex-wrap gap-y-1 gap-x-4 py-3 border-t',
+                        isInvert ? 'border-navy-500/22' : 'border-navy-500/16',
+                      ]}
+                    >
+                      <dt class="shrink-0 basis-32 font-display font-medium text-xs tracking-[0.08em] uppercase text-navy-500 pt-0.5">
+                        {f.label}
+                      </dt>
+                      <dd class="m-0 text-small text-navy-600">{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <div class="mt-8" data-reveal style="--reveal-delay:260ms">
+                  <Button
+                    href={item.cta.href}
+                    variant={i === 0 ? 'primary-invert' : 'ghost-invert'}
+                  >
+                    {item.cta.label}
+                  </Button>
+                </div>
+              </div>
+
+              {item.figure !== 'none' && (
+                <div
+                  class="col-span-12 min-[62rem]:col-start-7 min-[62rem]:col-span-6"
+                  data-reveal
+                  style="--reveal-delay:140ms"
+                >
+                  <WindowFrame
+                    title={
+                      item.figure === 'hub'
+                        ? 'Plattformtopologie schematisch'
+                        : 'Belegweg schematischer Ablauf'
+                    }
+                    meta={item.figure === 'hub' ? 'Struktur' : 'Prozess'}
+                  >
+                    {item.figure === 'hub' ? <PlattformHub /> : <BelegPipeline />}
+                  </WindowFrame>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+
+  <CrossLinks
+    items={[
+      {
+        label: 'Leistungen',
+        href: '/leistungen',
+        text: 'Die Felder, aus denen diese Systeme entstehen.',
+      },
+      {
+        label: 'Technik & Sicherheit',
+        href: '/technik-sicherheit',
+        text: 'Wie die Infrastruktur dahinter aufgesetzt ist.',
+      },
+      { label: 'Über uns', href: '/ueber-uns#zielgruppen', text: 'Für wen wir solche Systeme bauen.' },
+    ]}
+  />
+</Layout>

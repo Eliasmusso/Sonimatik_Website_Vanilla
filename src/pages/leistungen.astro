@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import WindowFrame from '../components/WindowFrame.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+import ProcessBoard from '../components/ProcessBoard.svelte';
+import { glyphs, GLYPH_VIEWBOX, type GlyphName } from '../components/glyphs';
+
+const services: Array<{
+  id: string;
+  title: string;
+  icon: GlyphName;
+  text: string;
+  points: string[];
+  link?: { label: string; href: string };
+}> = [
+  {
+    id: 'prozessautomatisierung',
+    title: 'Prozessautomatisierung',
+    icon: 'automation',
+    text: 'Rechnungsläufe, Datenabgleich und Auftragsprozesse laufen regelbasiert statt von Hand. Das reduziert Doppelerfassung und die Fehler, die daraus entstehen.',
+    points: ['Rechnungsläufe', 'Datenabgleich', 'Auftragsprozesse'],
+  },
+  {
+    id: 'digitalisierung',
+    title: 'Digitalisierung von Abläufen',
+    icon: 'shop',
+    text: 'Papierbasierte Abläufe und Insellösungen in Fachbetrieben und Verwaltung werden durch durchgängige digitale Prozesse ersetzt, ohne den laufenden Betrieb zu unterbrechen.',
+    points: ['Fachbetrieb', 'Verwaltung', 'Schrittweise Einführung'],
+  },
+  {
+    id: 'plattformen',
+    title: 'Plattformentwicklung & Betrieb',
+    icon: 'platform',
+    text: 'Wir entwickeln B2B Plattformen und betreiben sie dauerhaft. Beispiel ist McEmm, die Plattform für die Mitgliedsbetriebe der Meditrend eG.',
+    points: ['Entwicklung', 'Betrieb und Wartung', 'Modularer Ausbau'],
+    link: { label: 'McEmm ansehen', href: '/produkte#mcemm' },
+  },
+  {
+    id: 'schnittstellen',
+    title: 'Schnittstellenentwicklung',
+    icon: 'interface',
+    text: 'Bestehende Systeme werden angebunden, nicht ersetzt: Anbindungen an ERP und DATEV sowie die gesamte elektronische Rechnungsstellung.',
+    points: ['ERP Anbindung', 'DATEV Schnittstelle', 'Elektronische Rechnung'],
+  },
+  {
+    id: 'hosting',
+    title: 'Hosting & Betreuung von Webauftritten',
+    icon: 'terminal',
+    text: 'Betrieb, Wartung und Aktualisierung von Webauftritten inklusive WordPress Hosting mit regelmäßigen Updates und Sicherungen.',
+    points: ['WordPress Hosting', 'Wartung und Updates', 'Serverstandort Deutschland'],
+  },
+  {
+    id: 'beratung',
+    title: 'Beratung zu IT Zertifizierungen und Cyberversicherungen',
+    icon: 'certificate',
+    text: 'Wir begleiten Betriebe bei den technischen Anforderungen von IT Zertifizierungen und bei den Nachweisen, die Cyberversicherer verlangen.',
+    points: ['Technische Anforderungen', 'Nachweise und Dokumentation'],
+    link: { label: 'Sicherheitskonzept anfragen', href: '/kontakt?betreff=sicherheit' },
+  },
+];
+
+const standardGroups = [
+  { label: 'Elektronische Rechnung', items: ['XRechnung', 'ZUGFeRD', 'Peppol', 'B2Brouter'] },
+  { label: 'Buchhaltung & ERP', items: ['DATEV', 'Dolibarr', 'ERP Anbindung'] },
+  { label: 'Technologie', items: ['PHP', 'Laravel', 'REST APIs'] },
+];
+---
+
+<Layout
+  title="Leistungen: Automatisierung & Schnittstellen | Sonimatik"
+  description="Prozessautomatisierung, Plattformentwicklung und Schnittstellenentwicklung für Fachbetriebe im Gesundheitswesen: modular, skalierbar und DSGVO konform."
+>
+  <PageHero
+    title="Was wir tun"
+    lead="Wir automatisieren wiederkehrende Prozesse und verbessern die Datenhaltung mit modernen, skalierbaren Softwaretechnologien und modularen Architekturen."
+    cta={{ label: 'Leistung anfragen', href: '/kontakt?betreff=allgemein' }}
+  />
+
+  <!-- Leistungsfelder -->
+  <section id="leistungsfelder" class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Leistungsfelder</span>
+        </h2>
+      </div>
+
+      <ul class="flex flex-col m-0 p-0 list-none">
+        {
+          services.map((s, i) => (
+            <li
+              class="border-t border-navy-500/16 last:border-b last:border-navy-500/16"
+              id={s.id}
+              data-reveal
+              style={`--reveal-delay:${i * 70}ms`}
+            >
+              <div class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-3 py-[clamp(1.75rem,3.5vw,2.5rem)]">
+                <div class="col-span-12 min-[62rem]:col-span-4 text-brand-700 flex items-center min-[62rem]:items-start gap-3.5">
+                  <svg
+                    viewBox={GLYPH_VIEWBOX}
+                    fill="currentColor"
+                    class="w-6 h-6 shrink-0"
+                    aria-hidden="true"
+                    set:html={glyphs[s.icon]}
+                  />
+                  <h3 class="m-0 font-display font-bold text-navy-900 text-h3 leading-[1.25] tracking-[-0.012em]">
+                    {s.title}
+                  </h3>
+                </div>
+
+                <div class="col-span-12 min-[62rem]:col-start-6 min-[62rem]:col-span-7">
+                  <p class="m-0 text-navy-500 max-w-[58ch]">{s.text}</p>
+                  <ul class="flex flex-wrap gap-y-2 gap-x-7 mt-[1.125rem] m-0 p-0 list-none">
+                    {s.points.map((pt) => (
+                      <li class="flex items-center gap-2.5 text-small text-navy-500">
+                        <span
+                          class="block shrink-0 w-3 h-[3px] rounded-full bg-brand-600 opacity-50"
+                          aria-hidden="true"
+                        />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {s.link && (
+                    <a
+                      class="inline-flex items-center gap-2 mt-5 font-display font-medium text-[0.9375rem] text-brand-700 no-underline border-b border-brand-300/35 pb-0.5 hover:border-brand-600"
+                      href={s.link.href}
+                    >
+                      {s.link.label}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Standards -->
+  <section
+    id="standards"
+    class="relative py-[var(--spacing-section)] bg-brand-50 text-navy-600 border-t border-navy-500/16"
+  >
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+        <h2
+          class="m-0 font-display font-bold text-navy-900 text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+        >
+          <span
+            class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-600 -translate-y-[0.32em]"
+            aria-hidden="true"></span><span>Formate und Standards, die wir anbinden</span>
+        </h2>
+      </div>
+      <p
+        class="m-0 text-lead leading-[1.6] text-navy-600 max-w-[54ch] mb-[clamp(2rem,4vw,2.75rem)]"
+        data-reveal
+      >
+        Elektronische Rechnungsstellung und Systemanbindung nach offenen Standards.
+      </p>
+
+      <div data-reveal style="--reveal-delay:80ms">
+        <div class="relative rounded-panel bg-white border border-navy-500/14 p-[clamp(1.75rem,3.5vw,3rem)]">
+          <dl class="flex flex-col m-0">
+            {
+              standardGroups.map((g) => (
+                <div class="py-5 border-t border-navy-500/16 first:border-t-0 first:pt-0">
+                  <dt class="font-display font-medium text-xs tracking-[0.1em] uppercase text-brand-700 mb-3.5">
+                    {g.label}
+                  </dt>
+                  <dd class="m-0">
+                    <ul class="flex flex-wrap gap-2 m-0 p-0 list-none">
+                      {g.items.map((it) => (
+                        <li class="py-1.5 px-3 border border-navy-500/30 rounded-control font-display font-medium text-[0.8125rem] text-navy-600">
+                          {it}
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prozess -->
+  <section id="prozess" class="relative py-[var(--spacing-section)] bg-navy-700">
+    <div class="w-full max-w-[84rem] mx-auto px-[var(--spacing-gutter)]">
+      <div class="grid grid-cols-12 gap-x-[clamp(1rem,2.5vw,2rem)]">
+        <div class="col-span-12 min-[62rem]:col-span-7">
+          <div class="mb-[clamp(1.75rem,3.5vw,2.75rem)]" data-reveal>
+            <h2
+              class="m-0 font-display font-bold text-white text-h2 leading-[1.15] tracking-[-0.018em] flex items-baseline gap-[0.34em]"
+            >
+              <span
+                class="shrink-0 w-[0.52em] h-[0.1em] min-h-[3px] rounded-full bg-brand-300 -translate-y-[0.32em]"
+                aria-hidden="true"></span><span>Wie das zusammenspielt</span>
+            </h2>
+          </div>
+          <p class="m-0 text-lead leading-[1.6] text-grau-200 max-w-[50ch]" data-reveal>
+            Bestehende Systeme bleiben, wo sie sind. Wir verbinden sie über Schnittstellen und
+            übernehmen die Schritte dazwischen.
+          </p>
+        </div>
+      </div>
+
+      <figure class="m-0 mt-[clamp(2.5rem,5vw,4rem)]" data-reveal style="--reveal-delay:120ms">
+        <WindowFrame title="Datenfluss einer Integration schematisch" meta="Ablauf" tone="on-deep">
+          <ProcessBoard client:visible />
+        </WindowFrame>
+
+        <figcaption class="mt-5 text-sm text-grau-300">
+          Schematischer Datenfluss einer Sonimatik Integration.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <CrossLinks
+    items={[
+      {
+        label: 'Produkte & Referenzprojekte',
+        href: '/produkte',
+        text: 'McEmm und die Zentralfakturierung zeigen, was aus diesen Leistungen in der Praxis entsteht.',
+      },
+      {
+        label: 'Technik & Sicherheit',
+        href: '/technik-sicherheit',
+        text: 'Wie wir Infrastruktur, Berechtigungen und Datenschutz aufsetzen.',
+      },
+      {
+        label: 'Über uns',
+        href: '/ueber-uns#zielgruppen',
+        text: 'Für welche Betriebe und Verbünde wir arbeiten.',
+      },
+    ]}
+  />
+</Layout>
